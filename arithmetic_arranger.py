@@ -1,7 +1,32 @@
-def arithmetic_arranger(problems):
-  # Get problems
+import re
 
+def arithmetic_arranger(problems,showResult = -1):
+  # Get problems, test length, throw error
+  if len(problems) > 5:
+    return 'Error: Too many problems.'
+  
+  for i in problems:
   # Test if data is OK else error
+    matchSymbol = re.findall('.+\s(\+|\-)\s.', i)
+    if matchSymbol:
+      pass
+    else:
+      return "Error: Operator must be '+' or '-'."
+
+    match = re.findall('^[0-9]+\s.\s[0-9]+$', i)
+    if match:
+      pass
+    else:
+      return 'Error: Numbers must only contain digits.'
+
+
+    matchFourDigits = re.findall('^[0-9]{1,4}\s.\s[0-9]{1,4}$', i)
+    print(matchFourDigits)
+    if matchFourDigits:
+      pass
+    else:
+      return 'Error: Numbers cannot be more than four digits.'
+    
 
   # Count number of data
 
@@ -14,4 +39,4 @@ def arithmetic_arranger(problems):
   #Then line 2
 
 
-  return arranged_problems
+ # return arranged_problems
